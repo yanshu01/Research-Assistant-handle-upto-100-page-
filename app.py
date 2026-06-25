@@ -6,6 +6,7 @@ from ingest import store_chunks
 from rag import generate_answer
 
 st.title("Research Assistant")
+st.caption("Handles up to 100 pages · Scanned PDFs ❌ · Photo-based PDFs ❌")
 
 uploaded_file = st.file_uploader(
     "Upload Research Paper",
