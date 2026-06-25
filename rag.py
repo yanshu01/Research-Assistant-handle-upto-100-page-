@@ -28,7 +28,16 @@ def search_chunks(question, top_k=5):
         n_results=min(top_k, count)
     )
 
-    return results["documents"][0]
+    retrieved_chunks = results["documents"][0]
+
+    # Always include the first chunk for document context
+    first_chunk_data = collection.get(ids=["chunk_0"])
+    first_chunk = first_chunk_data["documents"][0]
+
+    final_chunks = [first_chunk] + retrieved_chunks
+
+    # Remove duplicates while preserving order
+    return list(dict.fromkeys(final_chunks))
 
 
 def generate_answer(question):
