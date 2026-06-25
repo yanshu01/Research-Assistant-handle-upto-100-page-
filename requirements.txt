@@ -3,6 +3,7 @@ pymupdf
 chromadb
 sentence-transformers==2.7.0
 transformers==4.41.2
+tokenizers==0.19.1
 torch
 groq
 python-dotenv
