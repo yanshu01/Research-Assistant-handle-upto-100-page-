@@ -1,11 +1,11 @@
 import chromadb
 
-client = chromadb.PersistentClient(path="vector_db")
+def store_chunks(chunks, embeddings, db_path):
+    client = chromadb.PersistentClient(path=db_path)
 
-def store_chunks(chunks, embeddings):
     try:
         client.delete_collection(name="research_papers")
-    except:
+    except Exception:
         pass
 
     collection = client.get_or_create_collection(
